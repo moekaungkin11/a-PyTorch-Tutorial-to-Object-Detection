@@ -402,7 +402,7 @@ class SSD300(nn.Module):
         for k, fmap in enumerate(fmaps):
             for i in range(fmap_dims[fmap]):
                 for j in range(fmap_dims[fmap]):
-                    cx = (j + 0.5) / fmap_dims[fmap]
+                    cx = (j + 0.5) / fmap_dims[fmap] #me(fmap_dims[fmap] is equal to f_k that is image_size/steps and I think this is more practical)
                     cy = (i + 0.5) / fmap_dims[fmap]
 
                     for ratio in aspect_ratios[fmap]:
