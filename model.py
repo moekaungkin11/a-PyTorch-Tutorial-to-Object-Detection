@@ -103,8 +103,8 @@ class VGGBase(nn.Module):
         pretrained_param_names = list(pretrained_state_dict.keys())
 
         # Transfer conv. parameters from pretrained model to current model
-        for i, param in enumerate(param_names[:-4]):  #me excluding conv6 and conv7 parameters and in our initialized model,we doesn't
-        #include softmax layer and so weight and bias of conv 6 and 7 are the final layers.
+        for i, param in enumerate(param_names[:-4]):  #me excluding conv6 and conv7 parameters and replaceing initialized w & b with
+        #pritrained.In our initialized model,we doesn't include softmax layer and so weight and bias of conv 6 and 7 are the final layers.
             state_dict[param] = pretrained_state_dict[pretrained_param_names[i]]
 
         # Convert fc6, fc7 to convolutional layers, and subsample (by decimation) to sizes of conv6 and conv7
