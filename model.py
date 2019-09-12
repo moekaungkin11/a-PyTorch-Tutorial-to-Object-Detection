@@ -95,7 +95,7 @@ class VGGBase(nn.Module):
         Therefore, we convert fc6 and fc7 into convolutional layers, and subsample by decimation. See 'decimate' in utils.py.
         """
         # Current state of base
-        state_dict = self.state_dict()
+        state_dict = self.state_dict() #me weight and bais intialized random(not trained weight just weight initilalized randomly in init and forward method)
         param_names = list(state_dict.keys())
 
         # Pretrained VGG base
