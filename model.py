@@ -122,7 +122,8 @@ class VGGBase(nn.Module):
         # Note: an FC layer of size (K) operating on a flattened version (C*H*W) of a 2D image of size (C, H, W)...
         # ...is equivalent to a convolutional layer with kernel size (H, W), input channels C, output channels K...
         # ...operating on the 2D image of size (C, H, W) without padding
-
+        
+        #me loading the pretrained for continue triaining
         self.load_state_dict(state_dict)
 
         print("\nLoaded base model.\n")
