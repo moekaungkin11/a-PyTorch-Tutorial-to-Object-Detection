@@ -127,7 +127,7 @@ class VGGBase(nn.Module):
         self.load_state_dict(state_dict)
 
         print("\nLoaded base model.\n")
-
+        #me now we replaced and loaded state_dict with pretrained model with original vgg architecture with image size 224*224
 
 class AuxiliaryConvolutions(nn.Module):
     """
