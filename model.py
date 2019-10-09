@@ -489,6 +489,7 @@ class SSD300(nn.Module):
                 # Consider each box in order of decreasing scores
                 for box in range(class_decoded_locs.size(0)):
                     # If this box is already marked for suppression
+                    #me first all are zero,1s are replaced in the loop
                     if suppress[box] == 1:
                         continue
 
