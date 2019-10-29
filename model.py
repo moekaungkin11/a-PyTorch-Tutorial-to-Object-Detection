@@ -577,6 +577,8 @@ class MultiBoxLoss(nn.Module):
 
             overlap = find_jaccard_overlap(boxes[i],
                                            self.priors_xy)  # (n_objects, 8732)
+                                            #me calculating iou for every 8732 box and that is why iou shape is that much
+                                            #if forget,see my iou_test.py and test with it.
 
             # For each prior, find the object that has the maximum overlap
             overlap_for_each_prior, object_for_each_prior = overlap.max(dim=0)  # (8732)
