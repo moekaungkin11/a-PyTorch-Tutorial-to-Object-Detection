@@ -27,7 +27,8 @@ print_freq = 200  # print training or validation status every __ batches
 lr = 1e-3  # learning rate
 momentum = 0.9  # momentum
 weight_decay = 5e-4  # weight decay
-grad_clip = None  # clip if gradients are exploding, which may happen at larger batch sizes (sometimes at 32) - you will recognize it by a sorting error in the MuliBox loss calculation
+grad_clip = None  # clip if gradients are exploding, which may happen at larger batch sizes (sometimes at 32) - 
+                  #you will recognize it by a sorting error in the MuliBox loss calculation
 
 cudnn.benchmark = True
 
