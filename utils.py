@@ -483,6 +483,8 @@ def random_crop(image, boxes, labels, difficulties):
             bb_centers = (boxes[:, :2] + boxes[:, 2:]) / 2.  # (n_objects, 2)
 
             # Find bounding boxes whose centers are in the crop
+            #me checking if the boxes are in the crop.If forget how this work simply sretch this on papar and you'll get it easily
+            #me note that this return only true or false not numerical
             centers_in_crop = (bb_centers[:, 0] > left) * (bb_centers[:, 0] < right) * (bb_centers[:, 1] > top) * (
                     bb_centers[:, 1] < bottom)  # (n_objects), a Torch uInt8/Byte tensor, can be used as a boolean index
 
