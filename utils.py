@@ -519,8 +519,8 @@ def flip(image, boxes):
 
     # Flip boxes
     new_boxes = boxes
-    new_boxes[:, 0] = image.width - boxes[:, 0] - 1
-    new_boxes[:, 2] = image.width - boxes[:, 2] - 1
+    new_boxes[:, 0] = image.width - boxes[:, 0] #originally it said image.width - boxes[:,0]-1 but it changed it by my calculation
+    new_boxes[:, 2] = image.width - boxes[:, 2] #originally it said image.width - boxes[:,2]-1 but it changed it by my calculation
     new_boxes = new_boxes[:, [2, 1, 0, 3]]
 
     return new_image, new_boxes
