@@ -498,8 +498,14 @@ class SSD300(nn.Module):
                     # The max operation retains previously suppressed boxes, like an 'OR' operation
 
                     # Don't suppress this box, even though it has an overlap of 1 with itself
+                    #me The way how NMS work is 1st find JO of all objects and suppress all the overlapping boes that is greater than 
+                    # throushold except the most likely one coz if they overlap much,they may be the same object. For the most likely one
+                    # we can scurely set the suppress[box] as we sorted class_decoded_loc wrt scores and we skip the loop if already
+                    # suppressed.To clarify,let say obj 1,3,5 are overlapped than thres we know that obj 1 is the most likely as sorted 
+                    # and for 1,3 and 1,5 we set 1,1,1 to these and we keep the mosly likely(line 507)so we got 0,1,1 and for 3,1 and 5,1
+                    # we skip these(line 492,493)
                     suppress[box] = 0
-
+                    
                 # Store only unsuppressed boxes for this class
                 image_boxes.append(class_decoded_locs[1 - suppress])
                 image_labels.append(torch.LongTensor((1 - suppress).sum().item() * [c]).to(device))
