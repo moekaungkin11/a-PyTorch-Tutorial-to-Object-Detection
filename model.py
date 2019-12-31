@@ -497,7 +497,6 @@ class SSD300(nn.Module):
                     suppress = torch.max(suppress, overlap[box] > max_overlap)
                     # The max operation retains previously suppressed boxes, like an 'OR' operation
                     #me this line doesn't work without my edit,this edited version is in test/GT/tfssd/evaluating/model.py of my pc
-of
                     # Don't suppress this box, even though it has an overlap of 1 with itself
                     #me The way how NMS work is 1st find JO of all objects and suppress all the overlapping boes that is greater than 
                     # throushold except the most likely one coz if they overlap much,they may be the same object. For the most likely one
