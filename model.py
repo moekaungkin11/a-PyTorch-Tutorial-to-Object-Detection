@@ -502,7 +502,8 @@ class SSD300(nn.Module):
                     # throushold except the most possible obj location.The most possible obj loc is suppress[box] as we sorted class_decoded_loc 
                     # wrt scores and so the former the more possible there is an object after that we skip the loop if already suppressed.To 
                     # clarify,let say obj 1,3,5 are overlapped than thres and result 1,1,1 to these and then we keep the mosly likely(line 507)
-                    # so we got 0,1,1 and for 3,1 and 5,1 we skip these(line 492,493),we only need to find 3,5
+                    # so we got 0,1,1 and for 3,1 and 5,1 we skip these(line 492,493),we only need to find 3,5.NMS make sure only one box
+                    # for one object.
                     suppress[box] = 0
                     
                 # Store only unsuppressed boxes for this class
