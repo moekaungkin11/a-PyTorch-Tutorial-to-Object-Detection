@@ -261,6 +261,8 @@ class PredictionConvolutions(nn.Module):
         l_conv4_3 = self.loc_conv4_3(conv4_3_feats)  # (N, 16, 38, 38)
         l_conv4_3 = l_conv4_3.permute(0, 2, 3,
                                       1).contiguous()  # (N, 38, 38, 16), to match prior-box order (after .view())
+        #me why using permute is permute actually change the prarameter rather than reshping and so the variable in 2,3 actually moved to
+        # 1,2.
         # (.contiguous() ensures it is stored in a contiguous chunk of memory, needed for .view() below)
         l_conv4_3 = l_conv4_3.view(batch_size, -1, 4)  # (N, 5776, 4), there are a total 5776 boxes on this feature map
 
