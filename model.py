@@ -463,7 +463,7 @@ class SSD300(nn.Module):
             image_labels = list()
             image_scores = list()
 
-            max_scores, best_label = predicted_scores[i].max(dim=1)  # (8732)
+            # max_scores, best_label = predicted_scores[i].max(dim=1)  # (8732)
 
             # Check for each class
             for c in range(1, self.n_classes):
