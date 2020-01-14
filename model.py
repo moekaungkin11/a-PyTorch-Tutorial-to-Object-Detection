@@ -338,7 +338,7 @@ class SSD300(nn.Module):
         self.pred_convs = PredictionConvolutions(n_classes)
 
         # Since lower level features (conv4_3_feats) have considerably larger scales, we take the L2 norm and rescale
-        #me This is because we use 6 dilation in conv4_3 and this is why the filters are much larger than original
+        #me This is because we use 6 dilation in conv4_3 and that is why the filters are much larger than original
         # Rescale factor is initially set at 20, but is learned for each channel during back-prop
         self.rescale_factors = nn.Parameter(torch.FloatTensor(1, 512, 1, 1))  # there are 512 channels in conv4_3_feats
         nn.init.constant_(self.rescale_factors, 20)
@@ -360,6 +360,7 @@ class SSD300(nn.Module):
         norm = conv4_3_feats.pow(2).sum(dim=1, keepdim=True).sqrt()  # (N, 1, 38, 38)
         conv4_3_feats = conv4_3_feats / norm  # (N, 512, 38, 38)
         conv4_3_feats = conv4_3_feats * self.rescale_factors  # (N, 512, 38, 38)
+        #me why we multiply with 20 is because after normalizastion we got only 0 and 1 and this is so small.
         # (PyTorch autobroadcasts singleton dimensions during arithmetic)
 
         # Run auxiliary convolutions (higher level feature map generators)
