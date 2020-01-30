@@ -340,7 +340,8 @@ class SSD300(nn.Module):
         # Since lower level features (conv4_3_feats) have considerably larger scales, we take the L2 norm and rescale
         #me This is because we use 6 dilation in conv4_3 and that is why the filters are much larger than original
         # Rescale factor is initially set at 20, but is learned for each channel during back-prop
-        self.rescale_factors = nn.Parameter(torch.FloatTensor(1, 512, 1, 1))  # there are 512 channels in conv4_3_feats
+        self.rescale_factors = nn.Parameter(torch.FloatTensor(1, 512, 1, 1))  # there are 512 channels in conv4_3_feats 
+        #me can initiate to any dim only need to set other dim to 0(mean it work either (1,1,38,1) or (1,1,1,38) )
         nn.init.constant_(self.rescale_factors, 20)
 
         # Prior boxes
