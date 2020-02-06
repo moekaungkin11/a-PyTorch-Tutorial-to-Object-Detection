@@ -11,6 +11,7 @@ class VGGBase(nn.Module):
     """
     VGG base convolutions to produce lower-level feature maps.
     """
+    #why inherit nn.Module is nn.Con2d inherit from it and all neural network must inherit to it
 
     def __init__(self):
         #the following super is python2.in python3 just super().__init__()
