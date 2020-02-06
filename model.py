@@ -13,6 +13,7 @@ class VGGBase(nn.Module):
     """
 
     def __init__(self):
+        #the following super is python2.in python3 just super().__init__()
         super(VGGBase, self).__init__()
 
         # Standard convolutional layers in VGG16
